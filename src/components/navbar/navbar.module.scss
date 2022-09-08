@@ -1,0 +1,31 @@
+.nav {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  grid-column: -2 / span 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.item {
+  margin: 0 20px;
+}
+.link {
+  background-color: rgb(174, 0, 255);
+  border-radius: 5px;
+  display: block;
+  padding: 10px;
+  color: #000;
+  text-decoration: none;
+}
+.active {
+  background-color: rgb(81, 80, 82);
+  color: red;
+}

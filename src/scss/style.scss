@@ -1,0 +1,9 @@
+@import "./reset.scss";
+
+.container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 30px;
+  max-width: 1400px;
+}
