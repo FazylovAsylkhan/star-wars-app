@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import s from "./navbar.module.scss";
 
-console.log(s);
-
 function Navbar({ links }) {
   return (
     <nav className={s.nav}>
