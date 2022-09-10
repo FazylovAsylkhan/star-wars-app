@@ -6,7 +6,7 @@ function Header() {
   const links = [
     { url: "/", text: "Home" },
     { url: "/people", text: "People" },
-    { url: "/plants", text: "Plants" },
+    { url: "/planets", text: "Planets" },
     { url: "/starships", text: "Starships" },
   ];
 

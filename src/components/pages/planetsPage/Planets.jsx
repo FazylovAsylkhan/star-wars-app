@@ -3,7 +3,7 @@ import s from "./plants.module.scss";
 import downloadData from "../../../HOC/withData";
 import Card from "../../card/Card";
 
-function Plants() {
+function Planets() {
   const url = `https://swapi.dev/api/planets/`;
   const handleData = (data) => data.results.map((item) => Object.entries(item));
   const CardsWithContent = downloadData(Card, url, handleData);
@@ -17,4 +17,4 @@ function Plants() {
   );
 }
 
-export default Plants;
+export default Planets;
