@@ -20,8 +20,12 @@ function donwloadData(WrappedComponent, url, handleData) {
         {isPending && <h2>Loading...</h2>}
         {results &&
           results.map((result, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <WrappedComponent key={i} data={result} />
+            <WrappedComponent
+              key={result[0][1]}
+              list={result}
+              data={data}
+              index={i}
+            />
           ))}
       </>
     );

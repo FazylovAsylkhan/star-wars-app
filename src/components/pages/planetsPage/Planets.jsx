@@ -9,7 +9,7 @@ function Planets() {
   const CardsWithContent = downloadData(Card, url, handleData);
 
   return (
-    <div className={`${s.plants} content`}>
+    <div className={`${s.planets} content`}>
       <h1>Hellow world</h1>
       <h2>This is Plants page!</h2>
       <CardsWithContent />

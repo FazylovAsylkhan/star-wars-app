@@ -7,6 +7,7 @@ import People from "./components/pages/peoplePage";
 import Planets from "./components/pages/planetsPage";
 import Starships from "./components/pages/starshipsPage";
 import NotFound from "./components/pages/notFoundPage";
+import PersonalPage from "./components/pages/personalPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/people" element={<People />} />
+          <Route path="/people/:peopleId" element={<PersonalPage />} />
           <Route path="/planets" element={<Planets />} />
           <Route path="/starships" element={<Starships />} />
           <Route path="*" element={<NotFound />} />
