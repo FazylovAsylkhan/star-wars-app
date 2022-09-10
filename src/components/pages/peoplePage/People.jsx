@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./people.module.scss";
 import downloadData from "../../../HOC/withData";
-import Card from "../../card/Card";
+import Card from "../../card";
 
 function People() {
   const url = `https://swapi.dev/api/people/`;

@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./starships.module.scss";
 import downloadData from "../../../HOC/withData";
-import Card from "../../card/Card";
+import Card from "../../card";
 
 function Starships() {
   const url = `https://swapi.dev/api/starships/`;

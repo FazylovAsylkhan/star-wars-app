@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./plants.module.scss";
 import downloadData from "../../../HOC/withData";
-import Card from "../../card/Card";
+import Card from "../../card";
 
 function Planets() {
   const url = `https://swapi.dev/api/planets/`;
