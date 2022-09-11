@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./plants.module.scss";
 import downloadData from "../../../HOC/withData";
-import Card from "../../card";
+import Card from "../../cards/card";
 
 function Planets() {
   const url = `https://swapi.dev/api/planets/`;
@@ -11,7 +11,7 @@ function Planets() {
   return (
     <div className={`${s.planets} content`}>
       <h1>Hellow world</h1>
-      <h2>This is Plants page!</h2>
+      <h2>This is Planets page!</h2>
       <CardsWithContent />
     </div>
   );

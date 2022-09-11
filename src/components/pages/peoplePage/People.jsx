@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import s from "./people.module.scss";
-import useFetch from "../../../hooks/useFetch";
-import Card from "../../card";
+import Cards from "../../cards";
+import donwloadData from "../../../HOC/withData";
 
 function People() {
   const url = `https://swapi.dev/api/people/`;
-  const { data, isPending, error } = useFetch(url);
-  const [results, setResults] = useState();
+
   const transformSubDataToArray = (obj) =>
     obj.results.map((item) => Object.entries(item));
 
-  const WrappedComponent = () =>
-    results.map((result, i) => (
-      <Card key={result[0][1]} list={result} data={data} index={i} />
-    ));
+  const WrappedComponent = Cards;
 
-  useEffect(() => {
-    if (data) {
-      const withTransformedSubData = transformSubDataToArray(data);
-      setResults(withTransformedSubData);
-    }
-  }, [data]);
+  const props = {
+    WrappedComponent,
+    url,
+    handleData: transformSubDataToArray,
+  };
+
+  const PageContent = donwloadData(props);
 
   return (
     <div className={`${s.people} content`}>
       <h1>Hellow world</h1>
       <h2>This is people page!</h2>
-      <br />
-      {error && <h2>{error}</h2>}
-      {isPending && <h2>Loading...</h2>}
-      {results && <WrappedComponent />}
+      <PageContent />
     </div>
   );
 }

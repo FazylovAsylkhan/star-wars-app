@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
-function donwloadData(WrappedComponent, url, handleData) {
+function donwloadData(propsData) {
+  const { WrappedComponent, url, handleData } = propsData;
+
   return function WithData() {
     const { data, isPending, error } = useFetch(url);
-    const [results, setResults] = useState();
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
       if (data) {
@@ -18,15 +20,7 @@ function donwloadData(WrappedComponent, url, handleData) {
         <br />
         {error && <h2>{error}</h2>}
         {isPending && <h2>Loading...</h2>}
-        {results &&
-          results.map((result, i) => (
-            <WrappedComponent
-              key={result[0][1]}
-              list={result}
-              data={data}
-              index={i}
-            />
-          ))}
+        {results && <WrappedComponent results={results} data={data} />}
       </>
     );
   };
