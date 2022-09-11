@@ -16,9 +16,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/people" element={<People />} />
-          <Route path="/people/:peopleId" element={<PersonalPage />} />
+          <Route
+            path="/people/:id"
+            element={<PersonalPage urlPage="people" />}
+          />
           <Route path="/planets" element={<Planets />} />
+          <Route
+            path="/planets/:id"
+            element={<PersonalPage urlPage="planets" />}
+          />
           <Route path="/starships" element={<Starships />} />
+          <Route
+            path="/starships/:id"
+            element={<PersonalPage urlPage="starships" />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Wrapper>
