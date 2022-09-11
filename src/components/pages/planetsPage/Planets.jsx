@@ -4,16 +4,12 @@ import downloadData from "../../../HOC/withData";
 import Cards from "../../cards";
 
 function Planets() {
-  const url = `https://swapi.dev/api/planets/`;
-
   const transformSubDataToArray = (obj) =>
     obj.results.map((item) => Object.entries(item));
 
-  const WrappedComponent = Cards;
-
   const props = {
-    WrappedComponent,
-    url,
+    WrappedComponent: Cards,
+    url: `https://swapi.dev/api/planets/`,
     handleData: transformSubDataToArray,
   };
 

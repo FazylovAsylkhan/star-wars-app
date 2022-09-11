@@ -4,14 +4,12 @@ import s from "./personalPage.module.scss";
 import downloadData from "../../../HOC/withData";
 import Card from "../../cards/card";
 
-function PersonalPage({ urlPage }) {
+function PersonalPage({ namePage }) {
   const { id } = useParams();
-  const url = `https://swapi.dev/api/${urlPage}/${id}`;
   const transformDataToArray = (item) => Object.entries(item);
-  const WrappedComponent = Card;
   const props = {
-    WrappedComponent,
-    url,
+    WrappedComponent: Card,
+    url: `https://swapi.dev/api/${namePage}/${id}`,
     handleData: transformDataToArray,
   };
 
