@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./people.module.scss";
 import Cards from "../../cards";
-import donwloadData from "../../../HOC/withData";
+import downloadData from "../../../HOC/withData";
 
 function People() {
   const url = `https://swapi.dev/api/people/`;
@@ -17,7 +17,7 @@ function People() {
     handleData: transformSubDataToArray,
   };
 
-  const PageContent = donwloadData(props);
+  const PageContent = downloadData(props);
 
   return (
     <div className={`${s.people} content`}>
