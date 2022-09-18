@@ -18,17 +18,17 @@ function App() {
           <Route path="/people" element={<People />} />
           <Route
             path="/people/:id"
-            element={<PersonalPage urlPage="people" />}
+            element={<PersonalPage namePage="people" />}
           />
           <Route path="/planets" element={<Planets />} />
           <Route
             path="/planets/:id"
-            element={<PersonalPage urlPage="planets" />}
+            element={<PersonalPage namePage="planets" />}
           />
           <Route path="/starships" element={<Starships />} />
           <Route
             path="/starships/:id"
-            element={<PersonalPage urlPage="starships" />}
+            element={<PersonalPage namePage="starships" />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
