@@ -1,19 +1,18 @@
 import React from "react";
 import s from "./people.module.scss";
+import downloadData from "../../../HOC/withDataByRedux";
 import Cards from "../../cards";
-import downloadData from "../../../HOC/withData";
 
 function People() {
   const transformSubDataToArray = (obj) =>
     obj.results.map((item) => Object.entries(item));
-
-  const props = {
+  const parentProps = {
     WrappedComponent: Cards,
     url: `https://swapi.dev/api/people/`,
     handleData: transformSubDataToArray,
   };
 
-  const PageContent = downloadData(props);
+  const PageContent = downloadData(parentProps);
 
   return (
     <div className={`${s.people} content`}>
