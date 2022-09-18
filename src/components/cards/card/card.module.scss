@@ -1,4 +1,7 @@
-.list {
-  border: 1px solid gray;
-  background-color: white;
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px 0;
+  align-items: center;
 }
