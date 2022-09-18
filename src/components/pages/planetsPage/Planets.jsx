@@ -1,19 +1,19 @@
 import React from "react";
 import s from "./plants.module.scss";
-import downloadData from "../../../HOC/withData";
+import downloadData from "../../../HOC/withDataByRedux";
 import Cards from "../../cards";
 
 function Planets() {
   const transformSubDataToArray = (obj) =>
     obj.results.map((item) => Object.entries(item));
 
-  const props = {
+  const parentProps = {
     WrappedComponent: Cards,
     url: `https://swapi.dev/api/planets/`,
     handleData: transformSubDataToArray,
   };
 
-  const PageContent = downloadData(props);
+  const PageContent = downloadData(parentProps);
 
   return (
     <div className={`${s.planets} content`}>
