@@ -2,13 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import s from "./personalPage.module.scss";
 import downloadData from "../../../HOC/withData";
-import Card from "../../cards/card";
+import { transformDataToArray } from "../../../utils";
+import InfoBox from "../../infoBox";
 
 function PersonalPage({ namePage }) {
   const { id } = useParams();
-  const transformDataToArray = (item) => Object.entries(item);
   const props = {
-    WrappedComponent: Card,
+    WrappedComponent: InfoBox,
     url: `https://swapi.dev/api/${namePage}/${id}`,
     handleData: transformDataToArray,
   };

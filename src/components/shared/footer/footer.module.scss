@@ -1,0 +1,14 @@
+.footer {
+  height: 10vh;
+  background-color: rgb(10, 174, 174);
+  border: 1px solid blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: antiquewhite;
+}
+.copyright {
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 12;
+}

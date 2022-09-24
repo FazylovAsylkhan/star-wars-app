@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./card";
-import Pagination from "./pagination";
+import Pagination from "../pagination";
 import s from "./cards.module.scss";
 
 function Cards(props) {

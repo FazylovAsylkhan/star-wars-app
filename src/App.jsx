@@ -1,13 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Wrapper from "./components/shared/wrapper";
+import {
+  Home,
+  People,
+  Planets,
+  Starships,
+  NotFound,
+  PersonalPage,
+} from "./components/pages";
 import "./scss/style.scss";
-import Wrapper from "./components/share/wrapper";
-import Home from "./components/pages/homePage";
-import People from "./components/pages/peoplePage";
-import Planets from "./components/pages/planetsPage";
-import Starships from "./components/pages/starshipsPage";
-import NotFound from "./components/pages/notFoundPage";
-import PersonalPage from "./components/pages/personalPage";
 
 function App() {
   return (
