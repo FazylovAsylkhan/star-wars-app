@@ -10,8 +10,13 @@ function Cards(props) {
     <div className={s.wrapper}>
       {data && <Pagination data={data} />}
       <div className={s.cards}>
-        {results.map((result) => (
-          <Card key={result[0][1]} results={result} data={data} />
+        {results.map((result, index) => (
+          <Card
+            key={result[0][1]}
+            results={result}
+            data={data.results[index]}
+            index={index}
+          />
         ))}
       </div>
     </div>
