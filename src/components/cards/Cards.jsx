@@ -1,13 +1,13 @@
 import React from "react";
 import Card from "./card";
-import Pagination from "../pagination";
+import Pagination from "./pagination";
 import s from "./cards.module.scss";
 
 function Cards(props) {
   const { results, data } = props;
 
   return (
-    <div className={s.wrapper}>
+    <div data-testid="cards" className={s.wrapper}>
       {data && <Pagination data={data} />}
       <div className={s.cards}>
         {results.map((result, index) => (
@@ -15,7 +15,7 @@ function Cards(props) {
             key={result[0][1]}
             results={result}
             data={data.results[index]}
-            index={index}
+            idPersonalPage={index + 1}
           />
         ))}
       </div>

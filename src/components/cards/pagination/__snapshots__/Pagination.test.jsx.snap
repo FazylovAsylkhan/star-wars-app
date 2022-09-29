@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination component works should render Pagination component 1`] = `
+<div
+  class="pagination"
+  data-testid="pagination"
+>
+  <button
+    class="button light"
+    type="button"
+  >
+    Previous
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    Next
+  </button>
+</div>
+`;

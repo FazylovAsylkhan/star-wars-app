@@ -4,7 +4,7 @@ import s from "./navbar.module.scss";
 
 function Navbar({ links }) {
   return (
-    <nav className={s.nav}>
+    <nav data-testid="navbar" className={s.nav}>
       <ul className={s.list}>
         {links.map((link) => (
           <li key={link.text} className={s.item}>

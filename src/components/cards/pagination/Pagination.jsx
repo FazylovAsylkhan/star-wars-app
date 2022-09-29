@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import {
   fetchDataAction,
   fetchDataForCurrentPage,
-} from "../../store/fetchData/fetchDataAction";
-import buttonStyle from "../../scss/button.module.scss";
+} from "../../../store/fetchData/fetchDataAction";
+import buttonStyle from "../../../scss/button.module.scss";
 import s from "./pagination.module.scss";
 
 const BUTTON_TYPE_NEXT = "BUTTON_TYPE_NEXT";
@@ -17,15 +17,15 @@ function Pagination({ data }) {
   const dispatch = useDispatch();
 
   const handleClick = (type) => {
-    const url = type === BUTTON_TYPE_NEXT ? data.next : data.previous;
-    if (url) {
+    if (data) {
+      const url = type === BUTTON_TYPE_NEXT ? data.next : data.previous;
       dispatch(fetchDataForCurrentPage(url));
       fetchDataAction(dispatch);
     }
   };
 
   return (
-    <div className={s.pagination}>
+    <div data-testid="pagination" className={s.pagination}>
       <button
         type="button"
         className={buttonClass}

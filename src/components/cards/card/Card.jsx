@@ -6,14 +6,12 @@ import s from "./card.module.scss";
 
 function Card({ results: list, index }) {
   return (
-    <div className={s.card}>
-      {list && (
-        <>
-          <InfoBox results={list} />
-          <ButtonMore index={index} />
-        </>
-      )}
-    </div>
+    list && (
+      <div data-testid="card" className={s.card}>
+        <InfoBox results={list} />
+        <ButtonMore idPersonalPage={index} />
+      </div>
+    )
   );
 }
 

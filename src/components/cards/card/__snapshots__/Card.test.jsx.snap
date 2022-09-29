@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component works should render Card component 1`] = `
+<div
+  class="card"
+  data-testid="card"
+>
+  <ul
+    class="list"
+  >
+    <li>
+      <b>
+        name
+        : 
+      </b>
+      Luke Skywalker 1
+    </li>
+    <li>
+      <b>
+        birth_year
+        : 
+      </b>
+      19BBY
+    </li>
+    <li>
+      <b>
+        created
+        : 
+      </b>
+      2014-12-09T13:50:51.644000Z
+    </li>
+    <li>
+      <b>
+        edited
+        : 
+      </b>
+      2014-12-20T21:17:56.891000Z
+    </li>
+    <li>
+      <b>
+        eye_color
+        : 
+      </b>
+      blue
+    </li>
+    <li>
+      <b>
+        films
+        : 
+      </b>
+      https://swapi.dev/api/films/1/
+      https://swapi.dev/api/films/2/
+      https://swapi.dev/api/films/3/
+      https://swapi.dev/api/films/6/
+    </li>
+    <li>
+      <b>
+        gender
+        : 
+      </b>
+      female
+    </li>
+    <li>
+      <b>
+        hair_color
+        : 
+      </b>
+      blond
+    </li>
+  </ul>
+  <button
+    class="button primary"
+    type="button"
+  >
+    <a
+      class="link"
+      href="/undefined"
+    >
+      More ...
+    </a>
+  </button>
+</div>
+`;
