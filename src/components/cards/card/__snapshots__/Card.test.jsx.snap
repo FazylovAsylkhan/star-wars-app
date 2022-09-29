@@ -79,5 +79,10 @@ exports[`Card component works should render Card component 1`] = `
       More ...
     </a>
   </button>
+  <button
+    type="button"
+  >
+    Throw Error
+  </button>
 </div>
 `;
