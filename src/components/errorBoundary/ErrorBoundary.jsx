@@ -1,4 +1,5 @@
 import React from "react";
+import s from "./errorBoundary.module.scss";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -7,7 +8,6 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
@@ -15,12 +15,14 @@ class ErrorBoundary extends React.Component {
     const { hasError } = this.state;
     const { children } = this.props;
 
-    if (hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
-    }
+    const ErrorMessage = (
+      <div className={s.message}>
+        <h2 className={s.title}>Something went wrong.</h2>
+        <p className={s.description}>Pls reset the page</p>
+      </div>
+    );
 
-    return children;
+    return hasError ? ErrorMessage : children;
   }
 }
 

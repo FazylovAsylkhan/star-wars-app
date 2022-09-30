@@ -12,7 +12,6 @@ function Button({ children, type, callback = null, url = null }) {
       {children}
     </button>
   );
-  console.log(url);
 
   switch (type) {
     case "link":
