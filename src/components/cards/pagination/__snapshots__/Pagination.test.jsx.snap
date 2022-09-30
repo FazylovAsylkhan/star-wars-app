@@ -6,10 +6,64 @@ exports[`Pagination component works should render Pagination component 1`] = `
   data-testid="pagination"
 >
   <button
-    class="button light"
+    class="button dark"
     type="button"
   >
     Previous
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    1
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    2
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    3
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    4
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    5
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    6
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    7
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    8
+  </button>
+  <button
+    class="button light"
+    type="button"
+  >
+    9
   </button>
   <button
     class="button light"

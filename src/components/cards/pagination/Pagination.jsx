@@ -7,12 +7,10 @@ import {
 } from "../../../store/fetchData/fetchDataAction";
 import s from "./pagination.module.scss";
 import Button from "../../button/Button";
+import { getButtons } from "../../../utils";
 
 function Pagination({ data }) {
-  const buttons = [
-    { text: "Previous", url: data.previous },
-    { text: "Next", url: data.next },
-  ];
+  const buttons = getButtons(data);
   const dispatch = useDispatch();
   const handleClick = (url) => {
     if (url) {
@@ -27,7 +25,12 @@ function Pagination({ data }) {
         const { text, url } = button;
 
         return (
-          <Button key={url} type="pagination" callback={() => handleClick(url)}>
+          <Button
+            key={text}
+            type="pagination"
+            url={url}
+            callback={() => handleClick(url)}
+          >
             {text}
           </Button>
         );

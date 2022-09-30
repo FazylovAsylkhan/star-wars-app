@@ -3,15 +3,16 @@ import { Link, NavLink } from "react-router-dom";
 import s from "./button.module.scss";
 
 function Button({ children, type, callback = null, url = null }) {
-  const getButton = (classBtn = "") => (
+  const getButton = (classBtn = "", isDisable = false) => (
     <button
       onClick={() => callback()}
-      className={`${s.button} ${classBtn}`}
+      className={`${s.button} ${isDisable ? s.dark : classBtn}`}
       type="button"
     >
       {children}
     </button>
   );
+  console.log(url);
 
   switch (type) {
     case "link":
@@ -32,7 +33,7 @@ function Button({ children, type, callback = null, url = null }) {
         </NavLink>
       );
     case "pagination":
-      return getButton(s.light);
+      return getButton(s.light, !url);
     case "error":
       return getButton(s.danger);
     default:

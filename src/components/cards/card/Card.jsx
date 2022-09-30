@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import React, { useState } from "react";
 import Button from "../../button/Button";
-import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
+import ErrorBoundary from "../../errorBoundary";
 import InfoBox from "../../infoBox";
 import s from "./card.module.scss";
 
