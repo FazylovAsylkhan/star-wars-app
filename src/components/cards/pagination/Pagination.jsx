@@ -5,20 +5,17 @@ import {
   fetchDataAction,
   fetchDataForCurrentPage,
 } from "../../../store/fetchData/fetchDataAction";
-import buttonStyle from "../../../scss/button.module.scss";
 import s from "./pagination.module.scss";
-
-const BUTTON_TYPE_NEXT = "BUTTON_TYPE_NEXT";
-const BUTTON_TYPE_PREVIOUS = "BUTTON_TYPE_PREVIOUS";
+import Button from "../../button/Button";
 
 function Pagination({ data }) {
-  const buttonClass = `${buttonStyle.button} ${buttonStyle.light}`;
-
+  const buttons = [
+    { text: "Previous", url: data.previous },
+    { text: "Next", url: data.next },
+  ];
   const dispatch = useDispatch();
-
-  const handleClick = (type) => {
-    if (data) {
-      const url = type === BUTTON_TYPE_NEXT ? data.next : data.previous;
+  const handleClick = (url) => {
+    if (url) {
       dispatch(fetchDataForCurrentPage(url));
       fetchDataAction(dispatch);
     }
@@ -26,20 +23,15 @@ function Pagination({ data }) {
 
   return (
     <div data-testid="pagination" className={s.pagination}>
-      <button
-        type="button"
-        className={buttonClass}
-        onClick={() => handleClick(BUTTON_TYPE_PREVIOUS)}
-      >
-        Previous
-      </button>
-      <button
-        type="button"
-        className={buttonClass}
-        onClick={() => handleClick(BUTTON_TYPE_NEXT)}
-      >
-        Next
-      </button>
+      {buttons.map((button) => {
+        const { text, url } = button;
+
+        return (
+          <Button key={url} type="pagination" callback={() => handleClick(url)}>
+            {text}
+          </Button>
+        );
+      })}
     </div>
   );
 }

@@ -1,23 +1,22 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import Button from "../../../button/Button";
 import s from "./navbar.module.scss";
 
 function Navbar({ links }) {
   return (
     <nav data-testid="navbar" className={s.nav}>
       <ul className={s.list}>
-        {links.map((link) => (
-          <li key={link.text} className={s.item}>
-            <NavLink
-              to={link.url}
-              className={({ isActive }) =>
-                isActive ? `${s.link} ${s.active}` : s.link
-              }
-            >
-              {link.text}
-            </NavLink>
-          </li>
-        ))}
+        {links.map((link) => {
+          const { text, url } = link;
+
+          return (
+            <li key={text} className={s.item}>
+              <Button url={url} type="navLink">
+                {text}
+              </Button>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

@@ -15,7 +15,7 @@ function Cards(props) {
             key={result[0][1]}
             results={result}
             data={data.results[index]}
-            idPersonalPage={index + 1}
+            idPersonalPage={`${index + 1}`}
           />
         ))}
       </div>

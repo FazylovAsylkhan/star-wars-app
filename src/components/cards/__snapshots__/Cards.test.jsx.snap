@@ -92,18 +92,14 @@ exports[`Cards component works should render Cards component 1`] = `
           blond
         </li>
       </ul>
-      <button
+      <a
         class="button primary"
-        type="button"
+        href="/1"
       >
-        <a
-          class="link"
-          href="/undefined"
-        >
-          More ...
-        </a>
-      </button>
+        More ...
+      </a>
       <button
+        class="button danger"
         type="button"
       >
         Throw Error
@@ -176,18 +172,14 @@ exports[`Cards component works should render Cards component 1`] = `
           blond
         </li>
       </ul>
-      <button
+      <a
         class="button primary"
-        type="button"
+        href="/2"
       >
-        <a
-          class="link"
-          href="/undefined"
-        >
-          More ...
-        </a>
-      </button>
+        More ...
+      </a>
       <button
+        class="button danger"
         type="button"
       >
         Throw Error
@@ -260,18 +252,14 @@ exports[`Cards component works should render Cards component 1`] = `
           blond
         </li>
       </ul>
-      <button
+      <a
         class="button primary"
-        type="button"
+        href="/3"
       >
-        <a
-          class="link"
-          href="/undefined"
-        >
-          More ...
-        </a>
-      </button>
+        More ...
+      </a>
       <button
+        class="button danger"
         type="button"
       >
         Throw Error

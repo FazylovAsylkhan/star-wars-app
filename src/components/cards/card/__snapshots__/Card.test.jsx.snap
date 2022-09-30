@@ -68,18 +68,14 @@ exports[`Card component works should render Card component 1`] = `
       blond
     </li>
   </ul>
-  <button
+  <a
     class="button primary"
-    type="button"
+    href="/"
   >
-    <a
-      class="link"
-      href="/undefined"
-    >
-      More ...
-    </a>
-  </button>
+    More ...
+  </a>
   <button
+    class="button danger"
     type="button"
   >
     Throw Error

@@ -1,21 +1,23 @@
 /* eslint-disable prefer-destructuring */
 import React, { useState } from "react";
+import Button from "../../button/Button";
 import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import InfoBox from "../../infoBox";
-import ButtonMore from "../buttomMore";
 import s from "./card.module.scss";
 
-function Card({ results, index }) {
+function Card({ results, idPersonalPage }) {
   const [list, setList] = useState(results);
   return (
     results && (
       <ErrorBoundary>
         <div data-testid="card" className={s.card}>
           <InfoBox results={list} />
-          <ButtonMore idPersonalPage={index} />
-          <button type="button" onClick={() => setList(null)}>
+          <Button type="link" url={idPersonalPage}>
+            More ...
+          </Button>
+          <Button type="error" callback={() => setList(null)}>
             Throw Error
-          </button>
+          </Button>
         </div>
       </ErrorBoundary>
     )
