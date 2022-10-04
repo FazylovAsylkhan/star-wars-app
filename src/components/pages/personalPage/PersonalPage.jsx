@@ -16,7 +16,7 @@ function PersonalPage({ namePage }) {
   const PageContent = downloadData(props);
 
   return (
-    <div className={`${s.people} content`}>
+    <div className={`${s.personalPage} content`}>
       <h1>Hellow world</h1>
       <h2>This is Personal page!</h2>
       <PageContent />

@@ -9,7 +9,7 @@ function useFetch(url) {
     fetch(url)
       .then((res) => {
         if (!res.ok) {
-          throw Error("Could not fetch the data");
+          throw Error("ID not found");
         }
         return res.json();
       })
