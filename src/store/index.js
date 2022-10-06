@@ -1,15 +1,17 @@
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import fetchDataReducer from "./fetchData/fetchDataReducer";
+/* eslint-disable no-param-reassign */
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import changeUrlReducer from "./changeUrl";
+import dataAPI from "../services/dataApiService";
 
-const rootReducer = combineReducers({
-  fetchData: fetchDataReducer,
+const store = configureStore({
+  reducer: {
+    [dataAPI.reducerPath]: dataAPI.reducer,
+    changeUrlReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(dataAPI.middleware),
 });
-
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+setupListeners(store.dispatch);
 
 export default store;

@@ -1,21 +1,18 @@
 /* eslint-disable prefer-destructuring */
 import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  fetchDataAction,
-  fetchDataForCurrentPage,
-} from "../../../store/fetchData/fetchDataAction";
 import s from "./pagination.module.scss";
 import Button from "../../button/Button";
 import { getButtons } from "../../../utils";
+import { setCurrentUrl } from "../../../store/changeUrl";
 
 function Pagination({ data }) {
-  const buttons = getButtons(data);
   const dispatch = useDispatch();
+  const buttons = getButtons(data);
   const handleClick = (url) => {
     if (url) {
-      dispatch(fetchDataForCurrentPage(url));
-      fetchDataAction(dispatch);
+      const currentUrl = `${url.split("/").splice(4).join("/")}`;
+      dispatch(setCurrentUrl(currentUrl));
     }
   };
 

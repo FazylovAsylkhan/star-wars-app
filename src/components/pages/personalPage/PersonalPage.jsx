@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import dataAPI from "../../../services/dataApiService";
 import s from "./personalPage.module.scss";
-import downloadData from "../../../HOC/withData";
 import { transformDataToArray } from "../../../utils";
 import InfoBox from "../../infoBox";
 
 function PersonalPage({ namePage }) {
   const { id } = useParams();
-  const props = {
-    WrappedComponent: InfoBox,
-    url: `https://swapi.dev/api/${namePage}/${id}`,
-    handleData: transformDataToArray,
-  };
+  const url = `/${namePage}/${id}`;
+  const { data, error, isFetching } = dataAPI.useFetchPersonalCardQuery(url);
+  const [handledData, setHandledData] = useState(null);
 
-  const PageContent = downloadData(props);
+  useEffect(() => {
+    if (data) {
+      const arrayData = transformDataToArray(data);
+      setHandledData(arrayData);
+    }
+  }, [data]);
 
   return (
     <div className={`${s.personalPage} content`}>
       <h1>Hellow world</h1>
       <h2>This is Personal page!</h2>
-      <PageContent />
+      {error && <h2>{error}</h2>}
+      {isFetching && <h2>Loading...</h2>}
+      {handledData && <InfoBox results={handledData} />}
     </div>
   );
 }

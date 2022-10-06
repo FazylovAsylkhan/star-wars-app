@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+
 export const transformDataToArray = (item) => Object.entries(item);
 export const transformSubDataToArray = (obj) =>
   obj.results.map((item) => transformDataToArray(item));
@@ -25,3 +27,10 @@ export const getButtons = (data) => [
   ...getArrPages(data),
   { text: "Next", url: data.next },
 ];
+
+export const getCurrentPageFor = (namePage, url) => {
+  const isCurrentPageStarships = url.split("/")[0] === namePage;
+  const currentUrl = isCurrentPageStarships ? url : `${namePage}/?page=1`;
+
+  return currentUrl;
+};
