@@ -4,6 +4,7 @@ import dataAPI from "../../../services/dataApiService";
 import s from "./personalPage.module.scss";
 import { transformDataToArray } from "../../../utils";
 import InfoBox from "../../infoBox";
+import Loader from "../../loader";
 
 function PersonalPage({ namePage }) {
   const { id } = useParams();
@@ -23,7 +24,7 @@ function PersonalPage({ namePage }) {
       <h1>Hellow world</h1>
       <h2>This is Personal page!</h2>
       {error && <h2>{error}</h2>}
-      {isFetching && <h2>Loading...</h2>}
+      {isFetching && <Loader />}
       {handledData && <InfoBox results={handledData} />}
     </div>
   );

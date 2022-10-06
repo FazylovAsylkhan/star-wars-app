@@ -4,6 +4,7 @@ import dataAPI from "../../../services/dataApiService";
 import s from "./starships.module.scss";
 import Cards from "../../cards";
 import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
+import Loader from "../../loader";
 
 function Starships() {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
@@ -24,7 +25,7 @@ function Starships() {
       <h1>Hellow world</h1>
       <h2>This is Starships page!</h2>
       {error && <h2>{error}</h2>}
-      {isFetching && <h2>Loading...</h2>}
+      {isFetching && <Loader />}
       {handledData && <Cards data={data} results={handledData} />}
     </div>
   );
