@@ -5,6 +5,7 @@ import s from "./people.module.scss";
 import Cards from "../../cards";
 import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
 import Loader from "../../loader";
+import ErrorMessage from "../../errorMessage";
 
 function People() {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
@@ -24,7 +25,7 @@ function People() {
     <div className={`${s.people} content`}>
       <h1>Hellow world</h1>
       <h2>This is people page!</h2>
-      {error && <h2>{error}</h2>}
+      {error && <ErrorMessage textMessage={error} />}
       {isFetching && <Loader />}
       {handledData && <Cards data={data} results={handledData} />}
     </div>

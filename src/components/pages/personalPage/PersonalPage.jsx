@@ -5,6 +5,7 @@ import s from "./personalPage.module.scss";
 import { transformDataToArray } from "../../../utils";
 import InfoBox from "../../infoBox";
 import Loader from "../../loader";
+import ErrorMessage from "../../errorMessage";
 
 function PersonalPage({ namePage }) {
   const { id } = useParams();
@@ -23,7 +24,7 @@ function PersonalPage({ namePage }) {
     <div className={`${s.personalPage} content`}>
       <h1>Hellow world</h1>
       <h2>This is Personal page!</h2>
-      {error && <h2>{error}</h2>}
+      {error && <ErrorMessage textMessage={error} />}
       {isFetching && <Loader />}
       {handledData && <InfoBox results={handledData} />}
     </div>
