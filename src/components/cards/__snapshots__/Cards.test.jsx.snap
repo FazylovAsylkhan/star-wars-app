@@ -152,12 +152,6 @@ exports[`Cards component works should render Cards component 1`] = `
       >
         More ...
       </a>
-      <button
-        class="button danger"
-        type="button"
-      >
-        Throw Error
-      </button>
     </div>
     <div
       class="card"
@@ -232,12 +226,6 @@ exports[`Cards component works should render Cards component 1`] = `
       >
         More ...
       </a>
-      <button
-        class="button danger"
-        type="button"
-      >
-        Throw Error
-      </button>
     </div>
     <div
       class="card"
@@ -312,12 +300,6 @@ exports[`Cards component works should render Cards component 1`] = `
       >
         More ...
       </a>
-      <button
-        class="button danger"
-        type="button"
-      >
-        Throw Error
-      </button>
     </div>
   </div>
 </div>

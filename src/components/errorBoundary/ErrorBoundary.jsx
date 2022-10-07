@@ -1,10 +1,12 @@
 import React from "react";
+import ErrorMessage from "../errorMessage";
 import s from "./errorBoundary.module.scss";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
+    this.textMessage = props.textMessage;
   }
 
   static getDerivedStateFromError(error) {
@@ -15,15 +17,19 @@ class ErrorBoundary extends React.Component {
     const { hasError } = this.state;
     const { children } = this.props;
 
-    const ErrorMessage = (
-      <div className={s.message}>
-        <h2 className={s.title}>Something went wrong.</h2>
-        <p className={s.description}>Pls reset the page</p>
-      </div>
+    return hasError ? (
+      <ErrorMessage textMessage={this.textMessage} />
+    ) : (
+      children
     );
-
-    return hasError ? ErrorMessage : children;
   }
 }
+
+ErrorBoundary.defaultProps = {
+  textMessage: {
+    title: "Something went wrong.",
+    description: "Pls reset the page",
+  },
+};
 
 export default ErrorBoundary;

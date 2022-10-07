@@ -6,12 +6,14 @@ import Cards from "../../cards";
 import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
 import Loader from "../../loader";
 import ErrorMessage from "../../errorMessage";
+import errorMessages from "../../errorBoundary/errorMessages";
 
 function Starships() {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
   const currentUrl = getCurrentPageFor("starships", url);
 
-  const { data, error, isFetching } = dataAPI.useFetchAllCardsQuery(currentUrl);
+  const { data, isError, isFetching } =
+    dataAPI.useFetchAllCardsQuery(currentUrl);
   const [handledData, setHandledData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ function Starships() {
     <div className={`${s.starships} content`}>
       <h1>Hellow world</h1>
       <h2>This is Starships page!</h2>
-      {error && <ErrorMessage textMessage={error} />}
+      {isError && <ErrorMessage textMessage={errorMessages.fetchError} />}
       {isFetching && <Loader />}
       {handledData && <Cards data={data} results={handledData} />}
     </div>

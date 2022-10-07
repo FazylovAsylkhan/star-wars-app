@@ -4,6 +4,7 @@ import Button from "../button/Button";
 import s from "./ErrorMessage.module.scss";
 
 function ErrorMessage({ textMessage }) {
+  const { title, description } = textMessage;
   const [isEnable, setIsEnable] = useState(true);
   const handleClick = () => {
     setIsEnable(false);
@@ -20,7 +21,8 @@ function ErrorMessage({ textMessage }) {
     isEnable && (
       <div className={s.errorMessage}>
         <div className={s.box}>
-          <h2 className={s.title}>{textMessage}</h2>
+          <h2 className={s.title}>{title}</h2>
+          <p>{description}</p>
           <Button callback={() => handleClick()} type="error">
             Ok
           </Button>

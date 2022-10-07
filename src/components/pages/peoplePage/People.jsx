@@ -5,13 +5,15 @@ import s from "./people.module.scss";
 import Cards from "../../cards";
 import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
 import Loader from "../../loader";
+import errorMessages from "../../errorBoundary/errorMessages";
 import ErrorMessage from "../../errorMessage";
 
 function People() {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
   const currentUrl = getCurrentPageFor("people", url);
 
-  const { data, error, isFetching } = dataAPI.useFetchAllCardsQuery(currentUrl);
+  const { data, isError, isFetching } =
+    dataAPI.useFetchAllCardsQuery(currentUrl);
   const [handledData, setHandledData] = useState(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ function People() {
     <div className={`${s.people} content`}>
       <h1>Hellow world</h1>
       <h2>This is people page!</h2>
-      {error && <ErrorMessage textMessage={error} />}
+      {isError && <ErrorMessage textMessage={errorMessages.fetchError} />}
       {isFetching && <Loader />}
       {handledData && <Cards data={data} results={handledData} />}
     </div>
