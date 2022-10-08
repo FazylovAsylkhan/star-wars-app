@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import dataAPI from "../../../services/dataApiService";
-import s from "./starships.module.scss";
 import Cards from "../../cards";
 import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
 import Loader from "../../loader";
-import ErrorMessage from "../../errorMessage";
 import errorMessages from "../../errorBoundary/errorMessages";
+import ErrorMessage from "../../errorMessage";
+import s from "./previewPage.module.scss";
 
-function Starships() {
+function PreviewPage({ namePage }) {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
-  const currentUrl = getCurrentPageFor("starships", url);
+  const currentUrl = getCurrentPageFor(namePage, url);
 
   const { data, isError, isFetching } =
     dataAPI.useFetchAllCardsQuery(currentUrl);
@@ -24,9 +24,9 @@ function Starships() {
   }, [data]);
 
   return (
-    <div className={`${s.starships} content`}>
+    <div className={`${s.preview} content`}>
       <h1>Hellow world</h1>
-      <h2>This is Starships page!</h2>
+      <h2>This is {namePage} page!</h2>
       {isError && <ErrorMessage textMessage={errorMessages.fetchError} />}
       {isFetching && <Loader />}
       {handledData && <Cards data={data} results={handledData} />}
@@ -34,4 +34,4 @@ function Starships() {
   );
 }
 
-export default Starships;
+export default PreviewPage;
