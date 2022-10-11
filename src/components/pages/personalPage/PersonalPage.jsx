@@ -1,49 +1,59 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import dataAPI from "../../../services/dataApiService";
-import s from "./personalPage.module.scss";
-import { transformDataToArray } from "../../../utils";
-import InfoBox from "../../infoBox";
 import Loader from "../../loader";
-import ErrorMessage from "../../errorMessage";
+import Alert from "../../alert";
 import ErrorBoundary from "../../errorBoundary";
-import Button from "../../button/Button";
-import errorMessages from "../../errorBoundary/errorMessages";
+import InfoBox from "../../blocks/infoBox";
+import SpecificProps from "../../blocks/specificProps";
+import { DATA_ERROR, FETCH_ERROR } from "../../errorBoundary/textsErrors";
+import s from "./personalPage.module.scss";
+import getFilteredProps from "../../blocks/specificProps/utils";
+import Title from "../../title";
 
 function PersonalPage({ namePage }) {
   const { id } = useParams();
   const url = `/${namePage}/${id}`;
   const { data, isError, isFetching } = dataAPI.useFetchPersonalCardQuery(url);
-  const [handledData, setHandledData] = useState(null);
-
+  const [handledData, setHandledData] = useState(data);
+  const [filteredData, setFilteredData] = useState(null);
   const handleClick = () => {
     setHandledData("sad");
   };
 
   useEffect(() => {
     if (data) {
-      const arrayData = transformDataToArray(data);
-      setHandledData(arrayData);
+      setHandledData(data);
+      const filteredProps = getFilteredProps(data);
+      setFilteredData(filteredProps);
     }
   }, [data]);
 
   return (
-    <ErrorBoundary textMessage={{ ...errorMessages.dataError }}>
-      <div className={`${s.personalPage} content`}>
-        <h1>Hellow world</h1>
-        <h2>This is Personal page!</h2>
-        {isError && <ErrorMessage textMessage={errorMessages.fetchError} />}
-        {isFetching && <Loader />}
-        {handledData && (
-          <>
-            <InfoBox results={handledData} />
-            <Button type="error" callback={() => handleClick()}>
-              Throw Error
-            </Button>
-          </>
-        )}
-      </div>
-    </ErrorBoundary>
+    <div className={`${s.personalPage} content`}>
+      {isError && <Alert textMessage={FETCH_ERROR} />}
+      {isFetching && <Loader />}
+      {data && (
+        <>
+          <Title text={data.name} />
+          <div className={s.wrapper}>
+            <ErrorBoundary textMessage={DATA_ERROR}>
+              {handledData && (
+                <InfoBox url={handledData.url} handlerClick={handleClick} />
+              )}
+            </ErrorBoundary>
+            {data?.homeworld && <InfoBox url={data.homeworld} />}
+          </div>
+          {filteredData && (
+            <div className={s.additionalInfo}>
+              {filteredData.map((prop) => (
+                <SpecificProps key={prop.name} prop={prop} />
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
   );
 }
 

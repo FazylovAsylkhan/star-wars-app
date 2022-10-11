@@ -1,9 +1,3 @@
-import { useSelector } from "react-redux";
-
-export const transformDataToArray = (item) => Object.entries(item);
-export const transformSubDataToArray = (obj) =>
-  obj.results.map((item) => transformDataToArray(item));
-
 const getArrPages = (data) => {
   const arr = [];
   const countOfPage = Math.ceil(data.count / 10);
@@ -28,9 +22,13 @@ export const getButtons = (data) => [
   { text: "Next", url: data.next },
 ];
 
-export const getCurrentPageFor = (namePage, url) => {
-  const isCurrentPageStarships = url.split("/")[0] === namePage;
-  const currentUrl = isCurrentPageStarships ? url : `${namePage}/?page=1`;
+export const getCurrentUrl = (namePage, url) => {
+  const isNamePageEquilToCurrentPage = url.split("/")[0] === namePage;
+  const currentUrl = isNamePageEquilToCurrentPage ? url : `${namePage}/?page=1`;
 
   return currentUrl;
 };
+
+export function getRelativePathFrom(url) {
+  return url.split("/").splice(4).join("/");
+}

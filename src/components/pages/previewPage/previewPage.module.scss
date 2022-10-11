@@ -1,3 +1,13 @@
 .preview {
-  background-color: rgb(195, 21, 99);
+  padding: 100px 30px;
+  grid-column: 1 / 12 span;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 30px;
 }

@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import dataAPI from "../../../services/dataApiService";
 import Cards from "../../cards";
-import { getCurrentPageFor, transformSubDataToArray } from "../../../utils";
+import { getCurrentUrl } from "../../../utils";
 import Loader from "../../loader";
-import errorMessages from "../../errorBoundary/errorMessages";
-import ErrorMessage from "../../errorMessage";
+import { FETCH_ERROR } from "../../errorBoundary/textsErrors";
+import Alert from "../../alert";
 import s from "./previewPage.module.scss";
+import Pagination from "../../pagination";
+import Title from "../../title";
 
 function PreviewPage({ namePage }) {
   const url = useSelector((state) => state.changeUrlReducer.currentUrl);
-  const currentUrl = getCurrentPageFor(namePage, url);
+  const currentUrl = getCurrentUrl(namePage, url);
 
   const { data, isError, isFetching } =
     dataAPI.useFetchAllCardsQuery(currentUrl);
-  const [handledData, setHandledData] = useState(null);
-
-  useEffect(() => {
-    if (data) {
-      const arrayData = transformSubDataToArray(data);
-      setHandledData(arrayData);
-    }
-  }, [data]);
 
   return (
     <div className={`${s.preview} content`}>
-      <h1>Hellow world</h1>
-      <h2>This is {namePage} page!</h2>
-      {isError && <ErrorMessage textMessage={errorMessages.fetchError} />}
+      <Title text={namePage} />
+      {isError && <Alert textMessage={FETCH_ERROR} />}
       {isFetching && <Loader />}
-      {handledData && <Cards data={data} results={handledData} />}
+      {data && (
+        <div className={s.wrapper}>
+          <Cards data={data} />
+          <Pagination data={data} />
+        </div>
+      )}
     </div>
   );
 }

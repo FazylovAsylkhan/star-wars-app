@@ -1,15 +1,24 @@
-/* eslint-disable prefer-destructuring */
 import React from "react";
 import Button from "../../button/Button";
-import InfoBox from "../../infoBox";
 import s from "./card.module.scss";
 
-function Card({ results: list, idPersonalPage }) {
+function getDescription(data) {
+  if (data.gender) return `Gender: ${data.gender}`;
+  if (data.population) return `Population: ${data.population}`;
+  if (data.model) return `Model: ${data.model}`;
+  return null;
+}
+
+function Card({ data, idPersonalPage }) {
+  const description = getDescription(data);
   return (
-    list && (
+    data && (
       <div data-testid="card" className={s.card}>
-        <InfoBox results={list} />
-        <Button type="link" url={idPersonalPage}>
+        <div>
+          <h3>{data.name}</h3>
+          <p>{description}</p>
+        </div>
+        <Button type="primary" url={idPersonalPage}>
           More ...
         </Button>
       </div>

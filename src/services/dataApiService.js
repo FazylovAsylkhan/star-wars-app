@@ -14,6 +14,11 @@ const dataAPI = createApi({
         url,
       }),
     }),
+    fetchHomeworld: builder.query({
+      query: (url) => ({
+        url,
+      }),
+    }),
   }),
 });
 

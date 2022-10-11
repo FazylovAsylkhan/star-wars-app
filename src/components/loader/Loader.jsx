@@ -1,5 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import React, { useEffect } from "react";
+import Title from "../title";
 import s from "./Loader.module.scss";
 
 function Loader() {
@@ -13,7 +14,14 @@ function Loader() {
 
   return (
     <div className={s.loader}>
-      <h2 className={s.title}>Loading...</h2>
+      <div className={s.wrapper}>
+        <h3 className={s.title}>
+          Loading <span className={s.dot1}>.</span>
+          <span className={s.dot2}>.</span>
+          <span className={s.dot3}>.</span>{" "}
+        </h3>
+        <div className={s.spinner} />
+      </div>
     </div>
   );
 }

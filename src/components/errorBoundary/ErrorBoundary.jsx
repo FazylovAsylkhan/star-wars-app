@@ -1,5 +1,6 @@
 import React from "react";
-import ErrorMessage from "../errorMessage";
+import Alert from "../alert";
+import { DEFAULT_ERROR } from "./textsErrors";
 import s from "./errorBoundary.module.scss";
 
 class ErrorBoundary extends React.Component {
@@ -17,19 +18,12 @@ class ErrorBoundary extends React.Component {
     const { hasError } = this.state;
     const { children } = this.props;
 
-    return hasError ? (
-      <ErrorMessage textMessage={this.textMessage} />
-    ) : (
-      children
-    );
+    return hasError ? <Alert textMessage={this.textMessage} /> : children;
   }
 }
 
 ErrorBoundary.defaultProps = {
-  textMessage: {
-    title: "Something went wrong.",
-    description: "Pls reset the page",
-  },
+  textMessage: DEFAULT_ERROR,
 };
 
 export default ErrorBoundary;

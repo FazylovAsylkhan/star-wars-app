@@ -1,3 +1,22 @@
 .personalPage {
-  background-color: rgb(31, 137, 172);
+  // background-color: rgb(31, 137, 172);
+  padding: 100px 30px;
+  grid-column: 1 / 12 span;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.additionalInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px 30px;
+  background-color: #2f2f2f;
+  border-radius: 2rem;
+  margin-bottom: 30px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 100px;
 }

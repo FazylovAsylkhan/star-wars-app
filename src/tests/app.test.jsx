@@ -32,17 +32,17 @@ describe("App works", () => {
   it("should render the Home page", async () => {
     const { user } = renderWithProvidersAndRouter(<App />);
 
-    expect(screen.getByText(/This is home page!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Home/i)).toBeInTheDocument();
 
     await user.click(screen.getByText(/people/i));
-    expect(screen.getByText(/This is people page!/i)).toBeInTheDocument();
+    expect(screen.getByText(/people/i)).toBeInTheDocument();
     expect(await screen.findByText(/Luke Skywalker 1/i)).toBeInTheDocument();
   });
 
   it("should render the Error page", async () => {
     renderWithRouter(<App />, { route: "/some/error/route" });
 
-    expect(screen.getByText(/This is NotFound page!/i)).toBeInTheDocument();
+    expect(screen.getByText(/found/i)).toBeInTheDocument();
   });
 
   it("rendering a component that uses useLocation", async () => {
