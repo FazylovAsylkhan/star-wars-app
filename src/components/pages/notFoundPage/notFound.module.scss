@@ -1,3 +1,15 @@
 .notFound {
-  background-color: rgb(47, 113, 255);
+  padding: 100px 30px;
+  grid-column: 1 / 12 span;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.description {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }

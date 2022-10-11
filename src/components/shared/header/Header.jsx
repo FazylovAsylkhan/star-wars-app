@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./navbar";
+import Logo from "../../logo";
 import s from "./header.module.scss";
 
 function Header() {
@@ -12,6 +13,7 @@ function Header() {
 
   return (
     <header className={`${s.header} container`}>
+      <Logo />
       <Navbar links={links} />
     </header>
   );

@@ -2,41 +2,45 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import s from "./button.module.scss";
 
-function Button({ children, type, callback = null, url = null }) {
-  const getButton = (classBtn = "", isDisable = false) => (
-    <button
-      onClick={() => callback()}
-      className={`${s.button} ${isDisable ? s.dark : classBtn}`}
-      type="button"
-    >
-      {children}
-    </button>
-  );
+const getButton = (children, callback, classBtn = "", isDisable = false) => (
+  <button
+    onClick={() => callback()}
+    className={`${s.button} ${isDisable ? s.dark : classBtn}`}
+    type="button"
+  >
+    {children}
+  </button>
+);
+const getLink = (children, url, classBtn) => (
+  <Link className={classBtn} to={url}>
+    {children}
+  </Link>
+);
+const getNavLink = (children, url) => (
+  <NavLink
+    to={url}
+    className={({ isActive }) =>
+      isActive ? `${s.navlink} ${s.active}` : s.navlink
+    }
+  >
+    {children}
+  </NavLink>
+);
 
+function Button({ children, type, callback = null, url = null }) {
   switch (type) {
-    case "link":
-      return (
-        <Link className={`${s.button} ${s.primary}`} to={url}>
-          {children}
-        </Link>
-      );
     case "navLink":
-      return (
-        <NavLink
-          to={url}
-          className={({ isActive }) =>
-            isActive ? `${s.navlink} ${s.active}` : s.navlink
-          }
-        >
-          {children}
-        </NavLink>
-      );
+      return getNavLink(children, url);
+    case "primary":
+      return getLink(children, url, `${s.button} ${s.primary}`);
+    case "link":
+      return getLink(children, url, s.link);
     case "pagination":
-      return getButton(s.light, !url);
+      return getButton(children, callback, s.light, !url);
     case "error":
-      return getButton(s.danger);
+      return getButton(children, callback, s.danger);
     default:
-      return getButton();
+      return getButton(children, callback);
   }
 }
 
