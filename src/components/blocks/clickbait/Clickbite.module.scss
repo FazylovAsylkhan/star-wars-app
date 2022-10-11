@@ -1,0 +1,11 @@
+.link {
+  margin-right: 15px;
+  padding-bottom: 2px;
+
+  color: #1b7a68;
+  border-bottom: 1px solid #1b7a68;
+  &:hover {
+    color: rgba(#33ae98, 0.9);
+    border-bottom: 1px solid rgba(#33ae98, 0.9);
+  }
+}
